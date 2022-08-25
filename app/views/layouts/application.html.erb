@@ -9,7 +9,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "About Sharks" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "About Sharks" %>">
+    <meta
+      name="description"
+      content="<%= content_for?(:description) ? yield(:description) : "About Sharks" %>"
+    >
   </head>
   <body class='d-flex flex-column h-100'>
     <div class="collapse" id="navbarToggleExternalContent">
@@ -20,19 +23,30 @@
     </div>
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class='login-container'>
           <% if user_signed_in? %>
-              Logged in as <strong><%= current_user.email %></strong>.
-                <%= link_to 'Edit profile', edit_user_registration_path %> |
-                  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-                <% else %>
-                      <%= link_to "Sign up", new_user_registration_path %> |
-                        <%= link_to "Login", new_user_session_path %>
-                      <% end %>
-          </div>
+            Logged in as
+            <strong><%= current_user.email %></strong>.
+            <%= link_to 'Edit profile', edit_user_registration_path %>
+            |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path %>
+            |
+            <%= link_to "Login", new_user_session_path %>
+          <% end %>
+        </div>
       </div>
     </nav>
     <main>

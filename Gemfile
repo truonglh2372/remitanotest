@@ -30,6 +30,7 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'erb-formatter'
 gem 'jquery-rails'
+gem 'rails-controller-testing'
 gem 'webpacker', '~> 5.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
