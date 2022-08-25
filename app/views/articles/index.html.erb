@@ -1,33 +1,30 @@
-<style>
-  table, th, td {
-    border: 1px solid;
-  }
-</style>
-<h1>articles</h1>
+<div class="col-lg-10 col-md-10 mx-auto">
+  <h1>Funny video</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>title</th>
-      <th>body</th>
-      <th>description</th>
-    </tr>
-  </thead>
+  <table class="table ">
+    <tbody >
+      <% @articles.each do |article| %>
+        <tr>
+          <td>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/<%=article.youtube_id%>" frameborder="0" allowfullscreen></iframe>
+          </td>
+          <td>
+            <p class='text-left'><strong style='color: red'>Title:</strong> <%= article.title %> </p>
+            <p class='text-left'><strong style='color: red'>Shared By:</strong> <%= article.user.email %> </p>
+            <p class='text-left'><strong style='color: red'>Description:</strong> </p>
+            <p class='text-left'><%= article.body %> </p>
+          </td>
+          <% if user_signed_in? %>
+            <td><%= link_to 'Edit', edit_article_path(article) %></td>
+            <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%end%>
+        </tr>
+        </hr>
+      <% end %>
+    </tbody>
+  </table>
 
-  <tbody >
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.body %></td>
-        <td><%= article.description %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <br>
 
-<br>
-
-<%= link_to 'New article', new_article_path %>
+  <%= link_to 'New article', new_article_path %>
+</div>
