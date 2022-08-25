@@ -1,31 +1,33 @@
-<%= form_with(model: article) do |form| %>
-  <% if article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+<div class="col-lg-4 col-md-4 mx-auto">
+  <%= form_with(model: article) do |form| %>
+    <% if article.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% article.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title %><br>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :body %><br>
+      <%= form.text_area :body , class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :description %><br>
+      <%= form.text_area :description , class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.submit 'create a post', class: 'btn btn-primary' %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <div>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
-    </div>
-
-    <div>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %>
-    </div>
-
-    <div>
-      <%= form.label :description %><br>
-      <%= form.text_area :description %>
-    </div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
